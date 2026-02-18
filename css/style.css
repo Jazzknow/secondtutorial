@@ -2108,7 +2108,7 @@ header .logo {
 /* Extra small devices */
 @media (max-width: 480px) {
   .wrap {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   header {
@@ -2120,7 +2120,7 @@ header .logo {
   }
 
   .logo {
-    width: 40px;
+    width: 30px;
   }
 
   .banner-wrap h1 {
@@ -2129,6 +2129,16 @@ header .logo {
 
   .banner-wrap h4 {
     font-size: 12px;
+  }
+
+  .banner-video-bar {
+    right: 183px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
+    flex-direction: row;
+    padding: 10px;
+    gap: 8px;
   }
 
   .about .left .main-header h3 {
