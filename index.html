@@ -51,7 +51,7 @@
             </div>
             <div class="btn-header">
                 <ul>
-                    <li><a href="">Join Us</a></li>
+                    <li><button type="button" class="join-us-btn" id="openLoginModal">Join Us</button></li>
                 </ul>
             </div>
         </div>
@@ -191,6 +191,105 @@
                     <p>Tell us what you’re interested in—we’ll help you find the right fit.</p>
                 </div>
                 <a class="ministries-cta-btn" href="#">Contact us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Horizontal Scroll with Peek Effect -->
+    <section class="gallery section" id="gallery">
+        <div class="wrap">
+            <div class="gallery-head">
+                <p class="gallery-eyebrow">Our Community</p>
+                <h2>Moments of Worship</h2>
+                <p class="gallery-lead">
+                    Glimpses of fellowship, worship, and fellowship in our church family.
+                </p>
+            </div>
+
+            <div class="gallery-scroller">
+                <div class="gallery-track">
+                    <article class="gallery-card">
+                        <div class="gallery-card-inner">
+                            <img src="img/bannerimg.jpg" alt="Sunday Worship Service">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i class="fa-solid fa-church"></i></span>
+                                    <h3>Sunday Worship</h3>
+                                    <p>9:00 AM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-card">
+                        <div class="gallery-card-inner">
+                            <img src="img/agbbcbackground.jpg" alt="Youth Fellowship">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i class="fa-solid fa-users"></i></span>
+                                    <h3>Youth Fellowship</h3>
+                                    <p>Saturdays</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-card">
+                        <div class="gallery-card-inner">
+                            <img src="img/bgimage.jpg" alt="Bible Study">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i class="fa-solid fa-book-bible"></i></span>
+                                    <h3>Bible Study</h3>
+                                    <p>Wednesdays</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-card">
+                        <div class="gallery-card-inner">
+                            <img src="img/holycrossbg.jpg" alt="Praise and Worship">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i class="fa-solid fa-music"></i></span>
+                                    <h3>Praise & Worship</h3>
+                                    <p>Every Sunday</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-card gallery-card-wide">
+                        <div class="gallery-card-inner">
+                            <img src="img/bannerimg.jpg" alt="Community Outreach">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i
+                                            class="fa-solid fa-hand-holding-heart"></i></span>
+                                    <h3>Community Outreach</h3>
+                                    <p>Serving our neighbors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="gallery-card">
+                        <div class="gallery-card-inner">
+                            <img src="img/agbbcbackground.jpg" alt="Children's Ministry">
+                            <div class="gallery-card-overlay">
+                                <div class="gallery-card-content">
+                                    <span class="gallery-card-icon"><i class="fa-solid fa-child"></i></span>
+                                    <h3>Children's Ministry</h3>
+                                    <p>Sundays</p>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="gallery-nav">
+                <button class="gallery-nav-btn gallery-prev" aria-label="Previous">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="gallery-nav-btn gallery-next" aria-label="Next">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -362,14 +461,15 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#ministries">Ministries</a></li>
-                        <li><a href="#" class="footer-events-link">Events</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
                 <div class="footer-social">
                     <ul>
                         <li><a href="#" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a></li>
-                        <li><a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.facebook.com/agbbctanzacavite" aria-label="Facebook" target="_blank"><i
+                                    class="fa-brands fa-facebook-f"></i></a></li>
                         <li><a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
                     </ul>
                 </div>
@@ -456,6 +556,65 @@
             goTo(0);
         })();
 
+        // Gallery horizontal scroll with navigation buttons
+        (function () {
+            var scroller = document.querySelector('.gallery-scroller');
+            var prevBtn = document.querySelector('.gallery-prev');
+            var nextBtn = document.querySelector('.gallery-next');
+            var scrollAmount = 340;
+
+            if (!scroller) return;
+
+            // Button navigation
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function () {
+                    scroller.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function () {
+                    scroller.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Drag to scroll functionality
+            var isDown = false;
+            var startX;
+            var scrollLeft;
+
+            scroller.addEventListener('mousedown', function (e) {
+                isDown = true;
+                scroller.style.cursor = 'grabbing';
+                startX = e.pageX - scroller.offsetLeft;
+                scrollLeft = scroller.scrollLeft;
+            });
+
+            scroller.addEventListener('mouseleave', function () {
+                isDown = false;
+                scroller.style.cursor = 'grab';
+            });
+
+            scroller.addEventListener('mouseup', function () {
+                isDown = false;
+                scroller.style.cursor = 'grab';
+            });
+
+            scroller.addEventListener('mousemove', function (e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - scroller.offsetLeft;
+                var walk = (x - startX) * 2;
+                scroller.scrollLeft = scrollLeft - walk;
+            });
+        })();
+
         (function () {
             var trigger = document.querySelector('.nav-dropdown-trigger');
             var menu = document.querySelector('.nav-dropdown-menu');
@@ -476,26 +635,34 @@
             };
 
             function closeDropdown() {
-                var dropdown = trigger && trigger.closest('.nav-dropdown');
-                if (menu) menu.classList.remove('open');
+                if (!trigger || !menu) return;
+                var dropdown = trigger.closest('.nav-dropdown');
+
+                menu.classList.remove('open');
                 if (dropdown) dropdown.classList.remove('open');
-                if (trigger) trigger.setAttribute('aria-expanded', 'false');
+                trigger.setAttribute('aria-expanded', 'false');
             }
 
             function openCabinet(eventType) {
+                if (!bodyEl) return;
+
                 var contents = bodyEl.querySelectorAll('.events-cabinet-content');
                 contents.forEach(function (c) {
                     c.hidden = (c.getAttribute('data-event-type') !== eventType);
                 });
+
                 if (titleEl) titleEl.textContent = titles[eventType] || 'Events';
+
                 if (cabinet) {
                     cabinet.classList.add('open');
                     cabinet.setAttribute('aria-hidden', 'false');
                 }
+
                 if (backdrop) {
                     backdrop.classList.add('open');
                     backdrop.setAttribute('aria-hidden', 'false');
                 }
+
                 document.body.style.overflow = 'hidden';
             }
 
@@ -504,37 +671,99 @@
                     cabinet.classList.remove('open');
                     cabinet.setAttribute('aria-hidden', 'true');
                 }
+
                 if (backdrop) {
                     backdrop.classList.remove('open');
                     backdrop.setAttribute('aria-hidden', 'true');
                 }
+
                 document.body.style.overflow = '';
             }
 
+            /* ----------------------------
+               DROPDOWN LOGIC
+            ----------------------------- */
+
             if (trigger && menu) {
                 var dropdown = trigger.closest('.nav-dropdown');
+                var ignoreNextOutsideClick = false;
+
                 trigger.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    var open = menu.classList.toggle('open');
-                    if (dropdown) dropdown.classList.toggle('open', open);
-                    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+
+                    var isOpen = menu.classList.contains('open');
+                    closeDropdown();
+
+                    if (!isOpen) {
+                        menu.classList.add('open');
+                        if (dropdown) dropdown.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+
+                // Prevent closing when clicking inside menu
+                menu.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+
+                // 🔹 When cabinet close button is clicked
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', function (e) {
+                        e.stopPropagation(); // stop bubbling
+                        ignoreNextOutsideClick = true;
+
+                        closeCabinet();
+
+                        // Reset flag after current event loop
+                        setTimeout(function () {
+                            ignoreNextOutsideClick = false;
+                        }, 0);
+                    });
+                }
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', function (e) {
+
+                    if (ignoreNextOutsideClick) return;
+
+                    if (dropdown && !dropdown.contains(e.target)) {
+                        closeDropdown();
+                    }
                 });
             }
-            document.addEventListener('click', function () { closeDropdown(); });
-            if (menu) menu.addEventListener('click', function (e) { e.stopPropagation(); });
+
+
+            /* ----------------------------
+               OPTION CLICK
+            ----------------------------- */
 
             options.forEach(function (opt) {
                 opt.addEventListener('click', function () {
-                    closeDropdown();
-                    openCabinet(opt.getAttribute('data-event-type'));
+                    var type = opt.getAttribute('data-event-type');
+                    openCabinet(type);
                 });
             });
 
+            /* ----------------------------
+               CABINET CLOSE
+            ----------------------------- */
+
             if (closeBtn) closeBtn.addEventListener('click', closeCabinet);
             if (backdrop) backdrop.addEventListener('click', closeCabinet);
+
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') { closeDropdown(); closeCabinet(); }
+                if (e.key === 'Escape') {
+                    if (cabinet && cabinet.classList.contains('open')) {
+                        closeCabinet();
+                    } else {
+                        closeDropdown();
+                    }
+                }
             });
+
+            /* ----------------------------
+               FOOTER LINK
+            ----------------------------- */
 
             if (footerEventsLink) {
                 footerEventsLink.addEventListener('click', function (e) {
@@ -542,10 +771,254 @@
                     openCabinet('worship');
                 });
             }
+
         })();
 
+
         document.querySelector('.footer-year').textContent = new Date().getFullYear();
+
+        // ===============================
+        // LOGIN MODAL FUNCTIONALITY (FIXED)
+        // ===============================
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const loginModal = document.getElementById('loginModal');
+            const openLoginModal = document.getElementById('openLoginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            const phoneLoginBtn = document.getElementById('phoneLoginBtn');
+            const phoneLoginForm = document.getElementById('phoneLoginForm');
+            const emailLoginForm = document.getElementById('emailLoginForm');
+
+            const backToSocial = document.getElementById('backToSocial');
+            const backToSocialFromEmail = document.getElementById('backToSocialFromEmail');
+
+            const socialOptions = document.querySelector('.social-login-options');
+            const togglePassword = document.querySelector('.toggle-password');
+            const passwordInput = document.getElementById('loginPassword');
+
+            const googleBtn = document.querySelector('.social-login-btn.google');
+            const facebookBtn = document.querySelector('.social-login-btn.facebook');
+            const submitPhoneBtn = document.querySelector('.submit-phone-btn');
+            const submitEmailBtn = document.querySelector('.submit-email-btn');
+
+            if (!loginModal) return;
+
+            // ===============================
+            // OPEN MODAL
+            // ===============================
+            if (openLoginModal) {
+                openLoginModal.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    loginModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // ===============================
+            // CLOSE MODAL
+            // ===============================
+            function closeModal() {
+                loginModal.classList.remove('active');
+                document.body.style.overflow = '';
+
+                setTimeout(function () {
+                    if (phoneLoginForm) phoneLoginForm.classList.remove('active');
+                    if (emailLoginForm) emailLoginForm.classList.remove('active');
+                    if (socialOptions) socialOptions.classList.remove('hidden');
+                }, 300);
+            }
+
+            if (closeLoginModal) {
+                closeLoginModal.addEventListener('click', closeModal);
+            }
+
+            // ===============================
+            // SWITCH TO PHONE LOGIN
+            // ===============================
+            if (phoneLoginBtn) {
+                phoneLoginBtn.addEventListener('click', function () {
+                    if (socialOptions) socialOptions.classList.add('hidden');
+                    if (phoneLoginForm) phoneLoginForm.classList.add('active');
+                });
+            }
+
+            // Back to social (phone)
+            if (backToSocial) {
+                backToSocial.addEventListener('click', function () {
+                    if (phoneLoginForm) phoneLoginForm.classList.remove('active');
+                    if (socialOptions) socialOptions.classList.remove('hidden');
+                });
+            }
+
+            // Back to social (email)
+            if (backToSocialFromEmail) {
+                backToSocialFromEmail.addEventListener('click', function () {
+                    if (emailLoginForm) emailLoginForm.classList.remove('active');
+                    if (socialOptions) socialOptions.classList.remove('hidden');
+                });
+            }
+
+            // ===============================
+            // TOGGLE PASSWORD
+            // ===============================
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function () {
+                    const type = passwordInput.type === 'password' ? 'text' : 'password';
+                    passwordInput.type = type;
+
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-eye');
+                        icon.classList.toggle('fa-eye-slash');
+                    }
+                });
+            }
+
+            // ===============================
+            // GOOGLE LOGIN (Demo)
+            // ===============================
+            if (googleBtn) {
+                googleBtn.addEventListener('click', function () {
+                    if (socialOptions) socialOptions.classList.add('hidden');
+                    if (emailLoginForm) emailLoginForm.classList.add('active');
+                });
+            }
+
+            // ===============================
+            // FACEBOOK LOGIN (Demo)
+            // ===============================
+            if (facebookBtn) {
+                facebookBtn.addEventListener('click', function () {
+                    alert('Facebook OAuth would open here.');
+                });
+            }
+
+            // ===============================
+            // PHONE SUBMIT (Demo)
+            // ===============================
+            if (submitPhoneBtn) {
+                submitPhoneBtn.addEventListener('click', function () {
+                    const phoneInput = document.getElementById('phoneNumber');
+
+                    if (phoneInput && phoneInput.value.trim() !== '') {
+                        alert('Verification code sent to +63 ' + phoneInput.value);
+                    } else {
+                        alert('Please enter your cellphone number.');
+                    }
+                });
+            }
+
+            // ===============================
+            // EMAIL SUBMIT (Demo)
+            // ===============================
+            if (submitEmailBtn) {
+                submitEmailBtn.addEventListener('click', function () {
+                    const emailInput = document.getElementById('loginEmail');
+                    const passwordVal = document.getElementById('loginPassword');
+
+                    if (
+                        emailInput &&
+                        passwordVal &&
+                        emailInput.value.trim() !== '' &&
+                        passwordVal.value.trim() !== ''
+                    ) {
+                        alert('Login submitted for: ' + emailInput.value);
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+
+        });
+
     </script>
+
+    <!-- Login Modal -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal-container">
+            <button type="button" class="login-modal-close" id="closeLoginModal" aria-label="Close modal">
+                <i class="fa-solid fa-times"></i>
+            </button>
+
+            <div class="login-modal-header">
+                <div class="login-modal-logo">
+                    <img src="img/logoheader.png" alt="AGBBC">
+                </div>
+                <h2>Welcome Back</h2>
+                <p>Join us in growing your faith journey</p>
+            </div>
+
+            <div class="login-modal-body">
+                <!-- Social Login Options -->
+                <div class="social-login-options">
+                    <button type="button" class="social-login-btn google">
+                        <span class="social-icon"><i class="fa-brands fa-google"></i></span>
+                        <span class="social-text">Continue with Email</span>
+                    </button>
+                    <button type="button" class="social-login-btn facebook">
+                        <span class="social-icon"><i class="fa-brands fa-facebook-f"></i></span>
+                        <span class="social-text">Continue with Facebook</span>
+                    </button>
+                    <button type="button" class="social-login-btn phone" id="phoneLoginBtn">
+                        <span class="social-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                        <span class="social-text">Continue with Cellphone</span>
+                    </button>
+                </div>
+
+                <!-- Phone Login Form (Hidden by default) -->
+                <div class="phone-login-form" id="phoneLoginForm">
+                    <div class="form-group">
+                        <label for="phoneNumber">Cellphone Number</label>
+                        <div class="phone-input-wrapper">
+                            <span class="country-code">+63</span>
+                            <input type="tel" id="phoneNumber" placeholder="912 345 6789" pattern="[0-9]{10}">
+                        </div>
+                    </div>
+                    <button type="button" class="submit-phone-btn">
+                        <i class="fa-solid fa-paper-plane"></i> Send Verification Code
+                    </button>
+                    <button type="button" class="back-to-social-btn" id="backToSocial">
+                        <i class="fa-solid fa-arrow-left"></i> Back to login options
+                    </button>
+                </div>
+
+                <!-- Email Login Form (Hidden by default) -->
+                <div class="email-login-form" id="emailLoginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="loginPassword" placeholder="Enter your password">
+                            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="button" class="submit-email-btn">
+                        Sign In
+                    </button>
+                    <button type="button" class="back-to-social-btn" id="backToSocialFromEmail">
+                        <i class="fa-solid fa-arrow-left"></i> Back to login options
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-modal-footer">
+                <p>Don't have an account? <a href="#" class="register-link">Register here</a></p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
