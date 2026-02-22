@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Amazing Grace Bible Baptist Church</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="img/logoheader.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="admin-body">
+    <!-- Sidebar Container -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <!-- Header Container -->
+        <div id="header-container"></div>
+
+        <!-- Dashboard Content -->
+        <div class="admin-content">
+            <!-- Stats Cards -->
+            <section class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon stat-icon-primary">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Total Members</span>
+                        <span class="stat-value">1,245</span>
+                        <span class="stat-change stat-change-positive">
+                            <i class="fa-solid fa-arrow-up"></i> 12% this month
+                        </span>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon stat-icon-success">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Events This Month</span>
+                        <span class="stat-value">8</span>
+                        <span class="stat-change stat-change-neutral">
+                            <i class="fa-solid fa-minus"></i> Same as last month
+                        </span>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon stat-icon-warning">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">New Messages</span>
+                        <span class="stat-value">3</span>
+                        <span class="stat-change stat-change-positive">
+                            <i class="fa-solid fa-arrow-up"></i> 2 new today
+                        </span>
+                    </div>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon stat-icon-info">
+                        <i class="fa-solid fa-photo-film"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Gallery Images</span>
+                        <span class="stat-value">156</span>
+                        <span class="stat-change stat-change-positive">
+                            <i class="fa-solid fa-arrow-up"></i> 5 added
+                        </span>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Charts and Tables Row -->
+            <section class="dashboard-grid">
+                <!-- Upcoming Events -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Upcoming Events</h2>
+                        <button type="button" class="card-action">
+                            <i class="fa-solid fa-plus"></i> Add Event
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Event</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="event-cell">
+                                            <div class="event-icon">
+                                                <i class="fa-solid fa-church"></i>
+                                            </div>
+                                            <span>Morning Service & Communion</span>
+                                        </div>
+                                    </td>
+                                    <td>Feb 28, 2026</td>
+                                    <td>9:00 AM</td>
+                                    <td><span class="status-badge status-badge-active">Active</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button type="button" class="action-btn" aria-label="Edit">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button type="button" class="action-btn action-btn-danger"
+                                                aria-label="Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="event-cell">
+                                            <div class="event-icon">
+                                                <i class="fa-solid fa-book-bible"></i>
+                                            </div>
+                                            <span>Midweek Fellowship</span>
+                                        </div>
+                                    </td>
+                                    <td>Mar 1, 2026</td>
+                                    <td>7:00 PM</td>
+                                    <td><span class="status-badge status-badge-active">Active</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button type="button" class="action-btn" aria-label="Edit">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button type="button" class="action-btn action-btn-danger"
+                                                aria-label="Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="event-cell">
+                                            <div class="event-icon">
+                                                <i class="fa-solid fa-users"></i>
+                                            </div>
+                                            <span>Youth Night & Pizza</span>
+                                        </div>
+                                    </td>
+                                    <td>Mar 8, 2026</td>
+                                    <td>5:00 PM</td>
+                                    <td><span class="status-badge status-badge-pending">Pending</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button type="button" class="action-btn" aria-label="Edit">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button type="button" class="action-btn action-btn-danger"
+                                                aria-label="Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="event-cell">
+                                            <div class="event-icon">
+                                                <i class="fa-solid fa-hand-holding-heart"></i>
+                                            </div>
+                                            <span>Community Breakfast</span>
+                                        </div>
+                                    </td>
+                                    <td>Mar 15, 2026</td>
+                                    <td>8:00 AM</td>
+                                    <td><span class="status-badge status-badge-pending">Pending</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button type="button" class="action-btn" aria-label="Edit">
+                                                <i class="fa-solid fa-pen"></i>
+                                            </button>
+                                            <button type="button" class="action-btn action-btn-danger"
+                                                aria-label="Delete">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recent Messages -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Recent Messages</h2>
+                        <button type="button" class="card-action">
+                            View All
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="message-list">
+                            <div class="message-item">
+                                <div class="message-avatar">
+                                    <img src="img/logoheader.png" alt="User">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-name">John Doe</span>
+                                        <span class="message-time">2 hours ago</span>
+                                    </div>
+                                    <p class="message-preview">I'd like to know more about joining the youth
+                                        fellowship...</p>
+                                </div>
+                                <span class="message-status-unread"></span>
+                            </div>
+                            <div class="message-item">
+                                <div class="message-avatar">
+                                    <img src="img/logoheader.png" alt="User">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-name">Maria Garcia</span>
+                                        <span class="message-time">Yesterday</span>
+                                    </div>
+                                    <p class="message-preview">Can I schedule a visit for my family this Sunday?</p>
+                                </div>
+                                <span class="message-status-unread"></span>
+                            </div>
+                            <div class="message-item message-item-read">
+                                <div class="message-avatar">
+                                    <img src="img/logoheader.png" alt="User">
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <span class="message-name">Robert Smith</span>
+                                        <span class="message-time">3 days ago</span>
+                                    </div>
+                                    <p class="message-preview">Thank you for the wonderful service yesterday!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions and Ministry Overview -->
+            <section class="dashboard-grid dashboard-grid-2">
+                <!-- Quick Actions -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="quick-actions">
+                            <button type="button" class="quick-action-btn">
+                                <div class="quick-action-icon">
+                                    <i class="fa-solid fa-calendar-plus"></i>
+                                </div>
+                                <span>Add Event</span>
+                            </button>
+                            <button type="button" class="quick-action-btn">
+                                <div class="quick-action-icon">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
+                                <span>Add Member</span>
+                            </button>
+                            <button type="button" class="quick-action-btn">
+                                <div class="quick-action-icon">
+                                    <i class="fa-solid fa-bullhorn"></i>
+                                </div>
+                                <span>New Announcement</span>
+                            </button>
+                            <button type="button" class="quick-action-btn">
+                                <div class="quick-action-icon">
+                                    <i class="fa-solid fa-upload"></i>
+                                </div>
+                                <span>Upload Image</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ministry Overview -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Ministry Overview</h2>
+                        <button type="button" class="card-action">
+                            Manage
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="ministry-stats">
+                            <div class="ministry-stat">
+                                <div class="ministry-stat-icon">
+                                    <i class="fa-solid fa-children"></i>
+                                </div>
+                                <div class="ministry-stat-info">
+                                    <span class="ministry-stat-name">Children's Ministry</span>
+                                    <span class="ministry-stat-value">45 members</span>
+                                </div>
+                            </div>
+                            <div class="ministry-stat">
+                                <div class="ministry-stat-icon">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+                                <div class="ministry-stat-info">
+                                    <span class="ministry-stat-name">Youth Fellowship</span>
+                                    <span class="ministry-stat-value">78 members</span>
+                                </div>
+                            </div>
+                            <div class="ministry-stat">
+                                <div class="ministry-stat-icon">
+                                    <i class="fa-solid fa-music"></i>
+                                </div>
+                                <div class="ministry-stat-info">
+                                    <span class="ministry-stat-name">Worship & Music</span>
+                                    <span class="ministry-stat-value">23 members</span>
+                                </div>
+                            </div>
+                            <div class="ministry-stat">
+                                <div class="ministry-stat-icon">
+                                    <i class="fa-solid fa-book-bible"></i>
+                                </div>
+                                <div class="ministry-stat-info">
+                                    <span class="ministry-stat-name">Bible Study Groups</span>
+                                    <span class="ministry-stat-value">12 groups</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer Container -->
+        <div id="footer-container"></div>
+    </main>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script>
+        // Load Sidebar, Header, and Footer
+        Promise.all([
+            fetch('sidebar.html').then(response => response.text()),
+            fetch('header.html').then(response => response.text()),
+            fetch('footer.html').then(response => response.text())
+        ])
+            .then(([sidebarData, headerData, footerData]) => {
+                document.getElementById('sidebar-container').innerHTML = sidebarData;
+                document.getElementById('header-container').innerHTML = headerData;
+                document.getElementById('footer-container').innerHTML = footerData;
+                initSidebar();
+            })
+            .catch(error => console.error('Error loading components:', error));
+
+        function initSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
+            const sidebarClose = document.getElementById('sidebarClose');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const sidebarLogo = document.querySelector('.sidebar-logo');
+
+            if (!sidebar) return;
+
+            function openSidebar() {
+                sidebar.classList.add('open');
+                if (sidebarOverlay) sidebarOverlay.classList.add('active');
+                document.body.classList.add('sidebar-open');
+            }
+
+            function closeSidebar() {
+                sidebar.classList.remove('open');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+
+            function toggleCollapse() {
+                sidebar.classList.toggle('collapsed');
+                document.body.classList.toggle('sidebar-collapsed');
+                const icon = sidebarCollapseToggle.querySelector('i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-bars-staggered');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-bars-staggered');
+                }
+            }
+
+            function expandFromCollapsed() {
+                if (sidebar.classList.contains('collapsed')) {
+                    sidebar.classList.remove('collapsed');
+                    document.body.classList.remove('sidebar-collapsed');
+                    const icon = sidebarCollapseToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-bars-staggered');
+                    }
+                }
+            }
+
+            if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
+            if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+            if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+            if (sidebarCollapseToggle) sidebarCollapseToggle.addEventListener('click', toggleCollapse);
+            if (sidebarLogo) sidebarLogo.addEventListener('click', expandFromCollapsed);
+
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 768) {
+                    closeSidebar();
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
