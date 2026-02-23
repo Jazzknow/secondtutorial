@@ -1980,6 +1980,7 @@ header .logo {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
@@ -1988,6 +1989,7 @@ header .logo {
   .navlinks.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   .navlinks .navlinks-list {
@@ -3809,10 +3811,12 @@ body.sidebar-collapsed .admin-main {
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
 .sidebar-overlay.active {
+  pointer-events: auto;
   opacity: 1;
 }
 
@@ -3918,6 +3922,7 @@ body.sidebar-collapsed .admin-main {
 
   .sidebar-overlay {
     display: block;
+    pointer-events: none;
   }
 
   .admin-main {
