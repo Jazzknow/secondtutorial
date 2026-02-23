@@ -23,6 +23,26 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Ensure SweetAlert appears above all elements */
+.swal2-container {
+  z-index: 10000 !important;
+}
+
+/* Remove padding-right from SweetAlert */
+body.swal2-shown {
+  padding-right: 0 !important;
+}
+
+/* Hide scrollbar */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
 a {
   text-decoration: none;
 }
@@ -3794,6 +3814,79 @@ body.sidebar-collapsed .admin-main {
 
 .sidebar-overlay.active {
   opacity: 1;
+}
+
+/* Dropdown styles */
+.admin-user {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.admin-user:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.3s;
+}
+
+.admin-user.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.admin-user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: #1e1e2d;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  min-width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.admin-user.active .admin-user-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.dropdown-item:hover {
+  background-color: #2d2d44;
+}
+
+.dropdown-item i {
+  width: 16px;
 }
 
 /* Admin Responsive */
