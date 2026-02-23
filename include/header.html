@@ -12,11 +12,23 @@
             <i class="fa-regular fa-bell"></i>
             <span class="notification-dot"></span>
         </button>
-        <div class="admin-user">
-            <img src="img/logoheader.png" alt="Admin" class="admin-user-avatar">
+        <div class="admin-user" id="adminUserDropdown">
+            <img src="../img/logoheader.png" alt="Admin" class="admin-user-avatar">
             <div class="admin-user-info">
                 <span class="admin-user-name">Admin</span>
                 <span class="admin-user-role">Administrator</span>
+            </div>
+            <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+            <!-- Dropdown Menu -->
+            <div class="admin-user-dropdown" id="adminUserDropdownMenu">
+                <a href="#" class="dropdown-item" id="profileOption">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="#" class="dropdown-item" id="logoutOption">
+                    <i class="fa-solid fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
             </div>
         </div>
     </div>

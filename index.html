@@ -10,6 +10,29 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="img/logoheader.png">
     <link rel="stylesheet" href="css/style.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        /* Ensure SweetAlert appears above all elements */
+        .swal2-container {
+            z-index: 10000 !important;
+        }
+
+        /* Remove padding-right from SweetAlert */
+        body.swal2-shown {
+            padding-right: 0 !important;
+        }
+
+        /* Hide scrollbar */
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        html::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -483,6 +506,33 @@
         </div>
     </footer>
     <script>
+        // Check if redirected from admin and show login required message
+        (function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('needLogin') === '1') {
+                // Remove the query parameter from URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+
+                // Show SweetAlert after page loads
+                setTimeout(function () {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Login Required',
+                        text: 'Please login to access the admin dashboard.',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Open login modal after clicking OK
+                        const loginModal = document.getElementById('loginModal');
+                        if (loginModal) {
+                            loginModal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+                }, 100);
+            }
+        })();
+
         // Header scroll effect - add background color when scrolled
         (function () {
             var header = document.querySelector('header');
@@ -911,22 +961,93 @@
             }
 
             // ===============================
-            // EMAIL SUBMIT (Demo)
+            // EMAIL SUBMIT (Admin Authentication)
             // ===============================
             if (submitEmailBtn) {
+                // Add Enter key support for email and password inputs
+                const emailInput = document.getElementById('loginEmail');
+                const passwordInput = document.getElementById('loginPassword');
+
+                if (emailInput) {
+                    emailInput.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            submitEmailBtn.click();
+                        }
+                    });
+                }
+
+                if (passwordInput) {
+                    passwordInput.addEventListener('keypress', function (e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            submitEmailBtn.click();
+                        }
+                    });
+                }
+
                 submitEmailBtn.addEventListener('click', function () {
                     const emailInput = document.getElementById('loginEmail');
-                    const passwordVal = document.getElementById('loginPassword');
+                    const passwordInput = document.getElementById('loginPassword');
 
-                    if (
-                        emailInput &&
-                        passwordVal &&
-                        emailInput.value.trim() !== '' &&
-                        passwordVal.value.trim() !== ''
-                    ) {
-                        alert('Login submitted for: ' + emailInput.value);
+                    const email = emailInput ? emailInput.value.trim() : '';
+                    const password = passwordInput ? passwordInput.value.trim() : '';
+
+                    // Default admin credentials
+                    const adminEmail = 'admin@agbbc.org';
+                    const adminPassword = 'admin123';
+
+                    if (email === '' || password === '') {
+                        // Remove focus before showing SweetAlert
+                        submitEmailBtn.blur();
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Missing Credentials',
+                            text: 'Please enter both email and password.',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK'
+                        });
+                        return;
+                    }
+
+                    if (email === adminEmail && password === adminPassword) {
+                        // Store session
+                        sessionStorage.setItem('adminLoggedIn', 'true');
+                        sessionStorage.setItem('adminEmail', email);
+
+                        // Remove focus before showing SweetAlert
+                        submitEmailBtn.blur();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Login Successful!',
+                            text: 'Welcome back, Admin!',
+                            timer: 1500,
+                            showConfirmButton: false,
+                            confirmButtonColor: '#3085d6'
+                        }).then(() => {
+                            // Close modal and redirect
+                            const loginModal = document.getElementById('loginModal');
+                            if (loginModal) {
+                                loginModal.classList.remove('active');
+                                document.body.style.overflow = '';
+                            }
+                            // Clear form
+                            if (emailInput) emailInput.value = '';
+                            if (passwordInput) passwordInput.value = '';
+
+                            // Redirect to admin page
+                            window.location.href = 'admin/admin.html';
+                        });
                     } else {
-                        alert('Please fill in all fields.');
+                        // Remove focus before showing SweetAlert
+                        submitEmailBtn.blur();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Login Failed',
+                            text: 'Invalid email or password. Please try again.',
+                            confirmButtonColor: '#d33',
+                            confirmButtonText: 'Try Again'
+                        });
                     }
                 });
             }
