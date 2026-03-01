@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Session Manager -->
+    <script src="js/session.js"></script>
 </head>
 
 <body>
@@ -114,11 +116,23 @@
                     <a href="">Read More</a>
                 </div>
                 <div class="right">
-                    <div class="gallery-grid">
-                        <img src="img/bannerimg.jpg" alt="Church">
-                        <img src="img/bgimage.jpg" alt="Church">
-                        <img src="img/agbbcbackground.jpg" alt="Church">
-                        <img src="img/holycrossbg.jpg" alt="Church">
+                    <div class="about-video-container">
+                        <div class="about-video-wrapper">
+                            <video id="aboutVideo" controls playsinline poster="img/agbbcbackground.jpg">
+                                <source src="video/AnniversaryVideo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="about-video-overlay" id="videoOverlay">
+                                <button type="button" class="play-button" aria-label="Play video">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <span class="video-duration">Watch Video</span>
+                            </div>
+                        </div>
+                        <div class="about-video-caption">
+                            <span class="caption-icon"><i class="fa-solid fa-video"></i></span>
+                            <span class="caption-text">AGBBC Anniversary Celebration</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -485,32 +499,38 @@
         </div>
     </footer>
     <script>
-        // Check if redirected from admin and show login required message
+        // About video play button functionality
         (function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('needLogin') === '1') {
-                // Remove the query parameter from URL
-                window.history.replaceState({}, document.title, window.location.pathname);
+            const videoWrapper = document.querySelector('.about-video-wrapper');
+            const video = document.getElementById('aboutVideo');
+            const overlay = document.getElementById('videoOverlay');
 
-                // Show SweetAlert after page loads
-                setTimeout(function () {
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Login Required',
-                        text: 'Please login to access the admin dashboard.',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK'
-                    }).then(() => {
-                        // Open login modal after clicking OK
-                        const loginModal = document.getElementById('loginModal');
-                        if (loginModal) {
-                            loginModal.classList.add('active');
-                            document.body.style.overflow = 'hidden';
-                        }
-                    });
-                }, 100);
+            if (videoWrapper && video && overlay) {
+                // Click on overlay to play
+                overlay.addEventListener('click', function () {
+                    video.play();
+                    videoWrapper.classList.add('playing');
+                });
+
+                // Hide overlay when video plays
+                video.addEventListener('play', function () {
+                    videoWrapper.classList.add('playing');
+                });
+
+                // Show overlay when video pauses
+                video.addEventListener('pause', function () {
+                    videoWrapper.classList.remove('playing');
+                });
+
+                // Show overlay when video ends
+                video.addEventListener('ended', function () {
+                    videoWrapper.classList.remove('playing');
+                });
             }
         })();
+
+        // Check if redirected from admin and show login required message
+        SessionManager.handleLoginRequiredRedirect();
 
         // Header scroll effect - add background color when scrolled
         (function () {
@@ -940,96 +960,9 @@
             }
 
             // ===============================
-            // EMAIL SUBMIT (Admin Authentication)
+            // EMAIL SUBMIT (Admin Authentication) - Using Session Manager
             // ===============================
-            if (submitEmailBtn) {
-                // Add Enter key support for email and password inputs
-                const emailInput = document.getElementById('loginEmail');
-                const passwordInput = document.getElementById('loginPassword');
-
-                if (emailInput) {
-                    emailInput.addEventListener('keypress', function (e) {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            submitEmailBtn.click();
-                        }
-                    });
-                }
-
-                if (passwordInput) {
-                    passwordInput.addEventListener('keypress', function (e) {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            submitEmailBtn.click();
-                        }
-                    });
-                }
-
-                submitEmailBtn.addEventListener('click', function () {
-                    const emailInput = document.getElementById('loginEmail');
-                    const passwordInput = document.getElementById('loginPassword');
-
-                    const email = emailInput ? emailInput.value.trim() : '';
-                    const password = passwordInput ? passwordInput.value.trim() : '';
-
-                    // Default admin credentials
-                    const adminEmail = 'admin@agbbc.org';
-                    const adminPassword = 'admin123';
-
-                    if (email === '' || password === '') {
-                        // Remove focus before showing SweetAlert
-                        submitEmailBtn.blur();
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Missing Credentials',
-                            text: 'Please enter both email and password.',
-                            confirmButtonColor: '#3085d6',
-                            confirmButtonText: 'OK'
-                        });
-                        return;
-                    }
-
-                    if (email === adminEmail && password === adminPassword) {
-                        // Store session
-                        sessionStorage.setItem('adminLoggedIn', 'true');
-                        sessionStorage.setItem('adminEmail', email);
-
-                        // Remove focus before showing SweetAlert
-                        submitEmailBtn.blur();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Login Successful!',
-                            text: 'Welcome back, Admin!',
-                            timer: 1500,
-                            showConfirmButton: false,
-                            confirmButtonColor: '#3085d6'
-                        }).then(() => {
-                            // Close modal and redirect
-                            const loginModal = document.getElementById('loginModal');
-                            if (loginModal) {
-                                loginModal.classList.remove('active');
-                                document.body.style.overflow = '';
-                            }
-                            // Clear form
-                            if (emailInput) emailInput.value = '';
-                            if (passwordInput) passwordInput.value = '';
-
-                            // Redirect to admin page
-                            window.location.href = 'admin/admin.html';
-                        });
-                    } else {
-                        // Remove focus before showing SweetAlert
-                        submitEmailBtn.blur();
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Login Failed',
-                            text: 'Invalid email or password. Please try again.',
-                            confirmButtonColor: '#d33',
-                            confirmButtonText: 'Try Again'
-                        });
-                    }
-                });
-            }
+            SessionManager.setupLoginForm();
 
         });
 

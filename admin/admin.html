@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/style.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Session Manager -->
+    <script src="../js/session.js"></script>
 </head>
 
 <body class="admin-body">
@@ -355,14 +357,7 @@
 
     <script>
         // Check admin session on page load - redirect immediately if not logged in
-        (function () {
-            const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
-            if (!isLoggedIn || isLoggedIn !== 'true') {
-                // Redirect immediately to index.html with query parameter
-                window.location.href = '../index.html?needLogin=1';
-                return;
-            }
-        })();
+        SessionManager.initAdminSessionCheck();
 
         // Load Sidebar, Header, and Footer
         Promise.all([
@@ -376,6 +371,8 @@
                 document.getElementById('footer-container').innerHTML = footerData;
                 initSidebar();
                 initHeaderDropdown();
+                // Initialize logout after components are loaded
+                SessionManager.setupLogout();
             })
             .catch(error => console.error('Error loading components:', error));
 
@@ -383,7 +380,6 @@
         function initHeaderDropdown() {
             const adminUser = document.getElementById('adminUserDropdown');
             const dropdownMenu = document.getElementById('adminUserDropdownMenu');
-            const logoutOption = document.getElementById('logoutOption');
             const profileOption = document.getElementById('profileOption');
 
             if (adminUser) {
@@ -405,14 +401,6 @@
                 }
             }
 
-            // Logout functionality
-            if (logoutOption) {
-                logoutOption.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    handleLogout();
-                });
-            }
-
             // Profile functionality
             if (profileOption) {
                 profileOption.addEventListener('click', function (e) {
@@ -430,33 +418,6 @@
                     });
                 });
             }
-        }
-
-        function handleLogout() {
-            Swal.fire({
-                icon: 'question',
-                title: 'Logout',
-                text: 'Are you sure you want to logout?',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, logout',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    sessionStorage.removeItem('adminLoggedIn');
-                    sessionStorage.removeItem('adminEmail');
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Logged Out',
-                        text: 'You have been logged out successfully.',
-                        timer: 1500,
-                        showConfirmButton: false
-                    }).then(() => {
-                        window.location.href = '../index.html';
-                    });
-                }
-            });
         }
 
         function initSidebar() {
